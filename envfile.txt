@@ -1,0 +1,2 @@
+password : bVeyuBvVyjys3V1y
+mongourl =  mongodb+srv://priyanshjainmudit:bVeyuBvVyjys3V1y@cluster0.ito8lay.mongodb.net/
