@@ -16,6 +16,10 @@ Project Explanation
 
    ![image](https://github.com/priyanshJ23/Assigment1/assets/92028011/924a3d5c-da79-48d9-85af-3121a94cce74)
 
+5) If user is not within 500 m then it will send this message
+
+![image](https://github.com/priyanshJ23/Assigment1/assets/92028011/7fb98622-0e06-4024-8fe8-edd9ef650597)
+
    
 
 
