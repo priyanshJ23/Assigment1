@@ -33,7 +33,7 @@ function AddRestaurantForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/restaurants/', {
+      const response = await axios.post('https://assigment1-ord8.onrender.com/api/restaurants/', {
         name,
         address,
         latitude,

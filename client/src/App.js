@@ -1,18 +1,20 @@
 import React from 'react';
-import AddRestaurantForm from './Restaurent';
-import Userform from './Form';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AddRestaurantForm from './Restaurent'; 
+import Userform from './Form'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 
-import Navbar from './Navbar';
+import Navbar from './Navbar'; 
 
 function App() {
   return (
-    <Router>
+    <Router> 
       <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Userform />} />
-          <Route path="/restaurant" element={<AddRestaurantForm />} />
+        <Navbar /> 
+        <Routes> {/* Defining routes */}
+          {/* Route for the home page */}
+          <Route path="/" element={<Userform />} /> 
+          {/* Route for adding a restaurant */}
+          <Route path="/restaurant" element={<AddRestaurantForm />} /> 
         </Routes>
       </div>
     </Router>
