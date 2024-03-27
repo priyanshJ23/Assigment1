@@ -74,10 +74,12 @@ export default function UserForm() {
     let latlong = await navLocation().then((res) => {
       let latitude = res.coords.latitude;
       let longitude = res.coords.longitude;
+      console.log(latitude);
+      console.log(longitude);
       return [latitude, longitude];
     });
     let [lat, long] = latlong;
-    const response = await fetch("https://assigment1-ord8.onrender.com/getlocation/", {
+    const response = await fetch("http://localhost:5000/getlocation/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -113,7 +115,7 @@ export default function UserForm() {
       console.log(formData);
 
       // Making POST request to save user data
-      const response = await fetch("https://assigment1-ord8.onrender.com/saveuserapi/", {
+      const response = await fetch("http://localhost:5000/saveuserapi/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

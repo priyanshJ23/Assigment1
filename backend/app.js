@@ -10,7 +10,6 @@ const dotenv = require("dotenv").config();
 const app = express();
 const PORT = 5000;
 
-// Doing Middleware setup
 app.use(bodyParser.json()); // For Parse incoming request bodies in JSON format
 app.use(cors({ origin: "http://localhost:3000" })); // Enable CORS for specified origin so no blocking
 
@@ -47,7 +46,7 @@ app.post("/saveuserapi", async (req, res) => {
     const isWithin500m =
       calculateDistance(
         userLocation.coordinates,
-        restaurant.location.coordinates
+        restaurant.location.coordinates,
       ) < 500;
 
     // Creating a new user instance with the calculated visit status
@@ -69,7 +68,7 @@ app.post("/saveuserapi", async (req, res) => {
     res.status(200).json({
       message: isWithin500m
         ? "Thank you for visiting the restaurant"
-        : "You are not within 500m of the restaurant",
+        : "User is not within 500m of the restaurant",
     });
   } catch (error) {
     console.error("Error saving user:", error);
@@ -77,10 +76,25 @@ app.post("/saveuserapi", async (req, res) => {
   }
 });
 
-// Function to calculate distance between two coordinates using Haversine formula
 function calculateDistance(coords1, coords2) {
-  // Calculation logic for distance
+  const R = 6371 * 1000; // Radius of the Earth in meters
+  const [lat1, lon1] = coords1;
+  const [lat2, lon2] = coords2;
+  const dLat = deg2rad(lat2 - lat1);
+  const dLon = deg2rad(lon2 - lon1);
+  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = R * c; // Distance in meters
+  return distance;
 }
+
+function deg2rad(deg) {
+  return deg * (Math.PI / 180);
+}
+
+
 
 // Endpoint for getting location based on latitude and longitude
 
